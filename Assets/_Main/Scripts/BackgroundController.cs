@@ -1,14 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BackgroundController : MonoBehaviour
 {
-    public  bool         isSwitched = false;
-    public  Image        background1;
-    public  Image        background2;
-    public  Animator     animator;
+    public bool     isSwitched = false;
+    public Image    background1;
+    public Image    background2;
+    public Animator animator;
 
     public void SetImage(Sprite sprite)
     {
@@ -36,6 +34,4 @@ public class BackgroundController : MonoBehaviour
         }
         isSwitched = !isSwitched;
     }
-
-
 }
