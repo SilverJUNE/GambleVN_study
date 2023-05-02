@@ -14,27 +14,17 @@ public class ChooseLabelController : MonoBehaviour,
     private TextMeshProUGUI text;
     private ChooseController controller;
 
-
     private void Awake()
     {
-        text = GetComponent<TextMeshProUGUI>();
+        text = GetComponentInChildren<TextMeshProUGUI>();
         text.color = defaultColor;
     }
 
-    public float GetHeight()
-    {
-        return text.rectTransform.sizeDelta.y * text.rectTransform.localScale.y;
-    }
-
-    public void Setup(ChooseScene.ChooseLabel label, ChooseController controller, float y)
+    public void Setup(ChooseScene.ChooseLabel label, ChooseController controller)
     {
         scene = label.nextScene;
         text.text = label.text;
         this.controller = controller;
-
-        Vector3 position = text.rectTransform.localPosition;
-        position.y = y;
-        text.rectTransform.localPosition = position;
     }
 
     public void OnPointerClick(PointerEventData eventData)

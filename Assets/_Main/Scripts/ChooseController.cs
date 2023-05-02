@@ -5,16 +5,14 @@ using TMPro;
 
 public class ChooseController : MonoBehaviour
 {
-    public ChooseLabelController label;
+    public GameObject labelPrefab;
     public GameController gameController;
     private RectTransform rectTransform;
     private Animator animator;
-    private float labelHeight = -1f;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
-        rectTransform = GetComponent<RectTransform>();
     }
 
     public void SetupChoose(ChooseScene scene)
@@ -23,16 +21,9 @@ public class ChooseController : MonoBehaviour
         animator.SetTrigger("Show");
         for (int index = 0; index < scene.labels.Count; index++)
         {
-            ChooseLabelController newLabel
-                = Instantiate(label.gameObject.transform,transform).GetComponent<ChooseLabelController>();
-
-            if (labelHeight == -1)
-            {
-                labelHeight = newLabel.GetHeight();
-            }
-
-            newLabel.Setup(scene.labels[index], this, CalculateLabelPosition(index, scene.labels.Count));
-
+            GameObject newLabelObject = Instantiate(labelPrefab, transform);
+            ChooseLabelController newLabel = newLabelObject.GetComponentInChildren<ChooseLabelController>();
+            newLabel.Setup(scene.labels[index], this);
         }
     }
 
@@ -42,36 +33,6 @@ public class ChooseController : MonoBehaviour
         animator.SetTrigger("Hide");
     }
 
-    private float CalculateLabelPosition(int labelIndex, int labelCount)
-    {
-        if (labelCount % 2 == 0)
-        {
-            if (labelIndex < labelCount / 2)
-            {
-                return labelHeight * (labelCount / 2 - labelIndex - 1) + labelHeight / 2;
-            }
-            else
-            {
-                return -1 * (labelHeight * (labelIndex - labelCount / 2) + labelHeight / 2);
-            }
-        }
-        else
-        {
-            if (labelIndex < labelCount / 2)
-            {
-                return labelHeight * (labelCount / 2 - labelIndex);
-            }
-            else if (labelIndex > labelCount / 2)
-            {
-                return -1 * (labelHeight * (labelIndex - labelCount / 2));
-            }
-            else
-            {
-                return 0;
-            }
-        }
-    }
-
     private void DestroyLabels()
     {
         foreach (Transform childTransform in transform)
@@ -79,5 +40,4 @@ public class ChooseController : MonoBehaviour
             Destroy(childTransform.gameObject);
         }
     }
-
 }
