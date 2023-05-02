@@ -21,8 +21,8 @@ public class ChooseController : MonoBehaviour
         animator.SetTrigger("Show");
         for (int index = 0; index < scene.labels.Count; index++)
         {
-            GameObject newLabelObject = Instantiate(labelPrefab, transform);
-            ChooseLabelController newLabel = newLabelObject.GetComponentInChildren<ChooseLabelController>();
+            GameObject              newLabelObject  = Instantiate(labelPrefab, transform);
+            ChooseLabelController   newLabel        = newLabelObject.GetComponentInChildren<ChooseLabelController>();
             newLabel.Setup(scene.labels[index], this);
         }
     }

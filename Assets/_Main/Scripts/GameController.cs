@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public GameScene currentScene;
-    public BottomBarController bottomBar;
-    public BackgroundController backgroundController;
-    public ChooseController chooseController;
+    public  GameScene               currentScene;
+    public  BottomBarController     bottomBar;
+    public  SpriteSwitcher          backgroundController;
+    public  ChooseController        chooseController;
 
-    private State state = State.IDLE;
+    private State                   state = State.IDLE;
 
     private enum State
     {
@@ -53,10 +53,10 @@ public class GameController : MonoBehaviour
     {
         state = State.ANIMATE;
         currentScene = scene;
-        bottomBar.Hide();
         yield return new WaitForSeconds(1f);
         if (scene is StoryScene)
         {
+            bottomBar.Hide();
             StoryScene storyScene = scene as StoryScene;
             backgroundController.SwitchImage(storyScene.background);
             yield return new WaitForSeconds(1f);

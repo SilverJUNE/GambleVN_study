@@ -6,6 +6,8 @@ using UnityEngine;
 [System.Serializable]
 public class Speaker : ScriptableObject
 {
-    public string   speakerName;
-    public Color    speakerNameColor;
+    public string               speakerName;
+    public Color                speakerNameColor;
+    public List<Sprite>         sprites;
+    public SpriteController     prefab;
 }

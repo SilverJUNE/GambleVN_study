@@ -17,5 +17,3 @@ MonoBehaviour:
     nextScene: {fileID: 11400000, guid: e19a294cd48f21f4cbaf5d846f12bf82, type: 2}
   - text: "\uB450 \uBC88\uC9F8 \uC52C\uC73C\uB85C \uB118\uC5B4\uAC04\uB2E4."
     nextScene: {fileID: 11400000, guid: e4a0bcc30cdcfe5478fbcf88cf2692cb, type: 2}
-  - text: "\uC138 \uBC88\uC9F8 \uC52C\uC73C\uB85C \uB118\uC5B4\uAC04\uB2E4."
-    nextScene: {fileID: 11400000, guid: b5c00baf4b97bbd4cb84c5b922630009, type: 2}
