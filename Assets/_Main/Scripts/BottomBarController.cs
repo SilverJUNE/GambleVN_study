@@ -19,14 +19,22 @@ public class BottomBarController : MonoBehaviour
         = new Dictionary<Speaker, SpriteController>();
     public GameObject       spritesPrefab;
 
+    private Coroutine       typingCoroutine;
+    private float           speedFactor = 1f;   
+
     private enum State
     {
-        PLAYING, COMPLETED
+        PLAYING, SPEED_UP, COMPLETED
     }
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+    }
+
+    public int GetSentenceIndex()
+    {
+        return sentenceIndex;
     }
 
     public void Hide()
@@ -59,18 +67,31 @@ public class BottomBarController : MonoBehaviour
 
     public void PlayNextSentence()
     {
-        StartCoroutine(TypeText(currentScene.sentences[++sentenceIndex].text));
+        speedFactor = 1f;
+        typingCoroutine = StartCoroutine(TypeText(currentScene.sentences[++sentenceIndex].text));
         ActSpeakers();
     }
 
     public bool IsCompleted()
     {
-        return state == State.COMPLETED;
+        return state == State.COMPLETED || state == State.SPEED_UP;
     }
 
     public bool IsLastSentence()
     {
         return sentenceIndex + 1 == currentScene.sentences.Count;
+    }
+
+    public void SpeedUP()
+    {
+        state = State.SPEED_UP;
+        speedFactor = 0.25f;
+    }
+
+    public void StopTyping()
+    {
+        state = State.COMPLETED;
+        StopCoroutine(typingCoroutine);
     }
 
     private IEnumerator TypeText(string text)
@@ -94,7 +115,7 @@ public class BottomBarController : MonoBehaviour
         while (state != State.COMPLETED)
         {
             barText.text += text[wordIndex];
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(speedFactor * 0.05f);
             if (++wordIndex == text.Length)
             {
                 state = State.COMPLETED;

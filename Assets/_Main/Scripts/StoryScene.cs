@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [CreateAssetMenu(fileName ="NewStoryScene", menuName ="Data/New StoryScene")]
 [System.Serializable]
 public class StoryScene : GameScene
@@ -17,6 +18,9 @@ public class StoryScene : GameScene
         [TextArea]
         public string           text;
         public List<Action>     actions;
+
+        public AudioClip music;
+        public AudioClip sound;
 
         [System.Serializable]
         public struct Action

@@ -26,6 +26,7 @@ public class SpriteController : MonoBehaviour
         rect.localPosition = coords;
     }
 
+
     public void Hide()
     {
         animator.SetTrigger("Hide");
@@ -40,7 +41,7 @@ public class SpriteController : MonoBehaviour
     {
         while (rect.localPosition.x != coords.x || rect.localPosition.y != coords.y)
         {
-            rect.localPosition 
+            rect.localPosition
                 = Vector2.MoveTowards(rect.localPosition, coords, Time.deltaTime * 1000f * speed);
             yield return new WaitForSeconds(0.01f);
         }

@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     public  BottomBarController     bottomBar;
     public  SpriteSwitcher          backgroundController;
     public  ChooseController        chooseController;
+    public  AudioController          audioController;
 
     private State                   state = State.IDLE;
 
@@ -16,32 +17,42 @@ public class GameController : MonoBehaviour
         IDLE, ANIMATE, CHOOSE
     }
 
-    private void Awake()
+    private void Start()
     {
         if (currentScene is StoryScene)
         {
             StoryScene storyScene = currentScene as StoryScene;
             backgroundController.SetImage(storyScene.background);
             bottomBar.PlayScene(storyScene);
+            PlayAudio(storyScene.sentences[0]);
         }
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        if(state == State.IDLE)
         {
-            if (state == State.IDLE && bottomBar.IsCompleted())
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
-                if (bottomBar.IsLastSentence())
+                if (state == State.IDLE && bottomBar.IsCompleted())
                 {
-                    PlayScene((currentScene as StoryScene).nextScene);
+                    if (bottomBar.IsLastSentence())
+                    {
+                        PlayScene((currentScene as StoryScene).nextScene);
+                    }
+                    else
+                    {
+                        bottomBar.PlayNextSentence();
+                        PlayAudio((currentScene as StoryScene).sentences[bottomBar.GetSentenceIndex()]);
+                    }
                 }
                 else
                 {
-                    bottomBar.PlayNextSentence();
+                    bottomBar.SpeedUP();
                 }
             }
         }
+
     }
 
     public void PlayScene(GameScene scene)
@@ -59,6 +70,7 @@ public class GameController : MonoBehaviour
             bottomBar.Hide();
             StoryScene storyScene = scene as StoryScene;
             backgroundController.SwitchImage(storyScene.background);
+            PlayAudio(storyScene.sentences[0]);
             yield return new WaitForSeconds(1f);
             bottomBar.ClearBarText();
             bottomBar.Show();
@@ -72,5 +84,10 @@ public class GameController : MonoBehaviour
             chooseController.SetupChoose(scene as ChooseScene);
         }
 
+    }
+
+    private void PlayAudio(StoryScene.Sentence sentence)
+    {
+        audioController.PlayAudio(sentence.music, sentence.sound) ;
     }
 }
