@@ -61,7 +61,6 @@ public class BottomBarController : MonoBehaviour
     {
         StartCoroutine(TypeText(currentScene.sentences[++sentenceIndex].text));
         ActSpeakers();
-
     }
 
     public bool IsCompleted()
@@ -157,7 +156,5 @@ public class BottomBarController : MonoBehaviour
         {
             controller.SwitchSprite(action.speaker.sprites[action.spriteIndex]);
         }
-
-
     }
 }
