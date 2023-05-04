@@ -20,10 +20,10 @@ MonoBehaviour:
     - speaker: {fileID: 11400000, guid: f727af5c1cfe05640a916d46408c62d9, type: 2}
       spriteIndex: 0
       actionType: 1
-      Coords: {x: 0, y: 0}
+      coords: {x: 0, y: 0}
       moveSpeed: 0
-  - speaker: {fileID: 11400000, guid: 77cd69213bbcc6b41bb7e80c1f46dacc, type: 2}
-    text: "\uC800\uB294 \uC874\uACE0, \uC774 \uC2A4\uD1A0\uB9AC\uB294\n\uC120\uD0DD
+  - speaker: {fileID: 11400000, guid: f727af5c1cfe05640a916d46408c62d9, type: 2}
+    text: "\uC800\uB294 \uB610\uD55C \uBBF8\uB098\uACE0, \uC774 \uC2A4\uD1A0\uB9AC\uB294\n\uC120\uD0DD
       \uCC3D\uC744 \uC704\uD55C\nStoryScne\uC785\uB2C8\uB2E4."
     actions: []
   - speaker: {fileID: 11400000, guid: 74e290efc9a65a743ae9a691e93da480, type: 2}
