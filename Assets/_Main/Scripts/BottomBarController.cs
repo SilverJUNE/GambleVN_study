@@ -20,7 +20,7 @@ public class BottomBarController : MonoBehaviour
     public GameObject       spritesPrefab;
 
     private Coroutine       typingCoroutine;
-    private float           speedFactor = 1f;   
+    private float           speedFactor = 1f;
 
     private enum State
     {
@@ -147,7 +147,7 @@ public class BottomBarController : MonoBehaviour
                 }
                 else
                 {
-                    controller = sprites[action.speaker];
+                   controller = sprites[action.speaker];
                 }
                 controller.Setup(action.speaker.sprites[action.spriteIndex]);
                 controller.Show(action.coords);

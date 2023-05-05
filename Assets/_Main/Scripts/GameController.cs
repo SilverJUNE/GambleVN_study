@@ -34,9 +34,10 @@ public class GameController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
-                if (state == State.IDLE && bottomBar.IsCompleted())
+                if(bottomBar.IsCompleted())
                 {
-                    if (bottomBar.IsLastSentence())
+                    bottomBar.StopTyping();
+                    if(bottomBar.IsLastSentence())
                     {
                         PlayScene((currentScene as StoryScene).nextScene);
                     }
@@ -51,6 +52,7 @@ public class GameController : MonoBehaviour
                     bottomBar.SpeedUP();
                 }
             }
+
         }
 
     }
