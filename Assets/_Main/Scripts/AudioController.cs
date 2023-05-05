@@ -30,7 +30,6 @@ public class AudioController : MonoBehaviour
                 musicSource.volume -= 0.05f;
                 yield return new WaitForSeconds(0.05f);
             }
-
         }
         else
         {
@@ -40,7 +39,7 @@ public class AudioController : MonoBehaviour
         musicSource.clip = music;
         musicSource.Play();
 
-        while (musicSource.volume < 0.5f)
+        while (musicSource.volume < 0.5)
         {
             musicSource.volume += 0.05f;
             yield return new WaitForSeconds(0.05f);

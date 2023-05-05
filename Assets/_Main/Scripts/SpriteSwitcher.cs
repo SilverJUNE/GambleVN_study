@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +13,21 @@ public class SpriteSwitcher : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+    }
+
+    public void SwitchImage(Sprite sprite)
+    {
+        if (!isSwitched)
+        {
+            image2.sprite = sprite;
+            animator.SetTrigger("SwitchFirst");
+        }
+        else
+        {
+            image1.sprite = sprite;
+            animator.SetTrigger("SwitchSecond");
+        }
+        isSwitched = !isSwitched;
     }
 
     public void SetImage(Sprite sprite)
@@ -47,20 +64,5 @@ public class SpriteSwitcher : MonoBehaviour
         {
             return  image2.sprite;
         }
-    }
-
-    public void SwitchImage(Sprite sprite)
-    {
-        if (!isSwitched)
-        {
-            image2.sprite = sprite;
-            animator.SetTrigger("SwitchFirst");
-        }
-        else
-        {
-            image1.sprite = sprite;
-            animator.SetTrigger("SwitchSecond");
-        }
-        isSwitched = !isSwitched;
     }
 }

@@ -15,20 +15,25 @@ public class BottomBarController : MonoBehaviour
     private Animator        animator;
     private bool            isHidden        = false;
 
-    public Dictionary<Speaker, SpriteController> sprites 
-        = new Dictionary<Speaker, SpriteController>();
+    public Dictionary<Speaker, SpriteController> sprites;
+
     public GameObject       spritesPrefab;
 
     private Coroutine       typingCoroutine;
-    private float           speedFactor = 1f;
+    private float           speedFactor;
 
     private enum State
     {
         PLAYING, SPEED_UP, COMPLETED
     }
 
-    private void Start()
+    private void Awake()
     {
+        sprites = new Dictionary<Speaker, SpriteController>();
+    }
+
+    private void Start()
+    { 
         animator = GetComponent<Animator>();
     }
 
@@ -44,7 +49,6 @@ public class BottomBarController : MonoBehaviour
             animator.SetTrigger("Hide");
             isHidden = true;
         }
-
     }
 
     public void Show()
@@ -56,7 +60,6 @@ public class BottomBarController : MonoBehaviour
     public void ClearText()
     {
         barText.text = "";
-        personNameText.text = "";
     }
 
     public void PlayScene(StoryScene scene, int sentenceIndex = -1, bool isAnimated = true)
@@ -68,8 +71,8 @@ public class BottomBarController : MonoBehaviour
 
     public void PlayNextSentence(bool isAnimated = true)
     {
-        sentenceIndex++;
-        PlaySentence(isAnimated);
+            sentenceIndex++;
+            PlaySentence(isAnimated);
     }
 
     public void GoBack()
@@ -92,7 +95,7 @@ public class BottomBarController : MonoBehaviour
 
     public bool IsFirstSentence()
     {
-        return sentenceIndex ==0;
+        return sentenceIndex == 0;
     }
 
     public void SpeedUP()
@@ -119,7 +122,7 @@ public class BottomBarController : MonoBehaviour
     private void PlaySentence(bool isAnimated = true)
     {
         speedFactor = 1f;
-        typingCoroutine = StartCoroutine(TypeText(currentScene.sentences[++sentenceIndex].text));
+        typingCoroutine = StartCoroutine(TypeText(currentScene.sentences[sentenceIndex].text));
         ActSpeakers(isAnimated);
     }
 

@@ -12,7 +12,7 @@ public class GameController : MonoBehaviour
 
     private State                   state = State.IDLE;
 
-    private List<StoryScene>        history;
+    private List<StoryScene>        history = new List<StoryScene>();
 
     private enum State
     {
@@ -25,13 +25,13 @@ public class GameController : MonoBehaviour
         {
             StoryScene storyScene = currentScene as StoryScene;
             history.Add(storyScene);
-            backgroundController.SetImage(storyScene.background);
             bottomBar.PlayScene(storyScene);
+            backgroundController.SetImage(storyScene.background);
             PlayAudio(storyScene.sentences[0]);
         }
     }
     private void Update()
-    {
+    { 
         if(state == State.IDLE)
         {
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
@@ -46,7 +46,8 @@ public class GameController : MonoBehaviour
                     else
                     {
                         bottomBar.PlayNextSentence();
-                        PlayAudio((currentScene as StoryScene).sentences[bottomBar.GetSentenceIndex()]);
+                        PlayAudio((currentScene as StoryScene)
+                            .sentences[bottomBar.GetSentenceIndex()]);
                     }
                 }
                 else
@@ -96,7 +97,7 @@ public class GameController : MonoBehaviour
         {
             StoryScene storyScene = scene as StoryScene;
             history.Add(storyScene);
-            PlayAudio(storyScene.sentences[sentenceIndex + 1]) ;
+            PlayAudio(storyScene.sentences[sentenceIndex + 1]);
             if(isAnimated)
             {
                 backgroundController.SwitchImage(storyScene.background);
