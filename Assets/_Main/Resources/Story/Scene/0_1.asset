@@ -27,7 +27,7 @@ MonoBehaviour:
     text: "\uCCAB \uBC88\uC9F8 \uC52C\uC758 \uBBF8\uB098 \uC785\uB2C8\uB2E4."
     actions:
     - speaker: {fileID: 11400000, guid: f727af5c1cfe05640a916d46408c62d9, type: 2}
-      spriteIndex: 5
+      spriteIndex: 6
       actionType: 1
       coords: {x: 0, y: -103}
       moveSpeed: 0
@@ -38,7 +38,7 @@ MonoBehaviour:
     actions:
     - speaker: {fileID: 11400000, guid: f727af5c1cfe05640a916d46408c62d9, type: 2}
       spriteIndex: 5
-      actionType: 0
+      actionType: 1
       coords: {x: 0, y: -103}
       moveSpeed: 0
     music: {fileID: 8300000, guid: b1a4b200ce662d048ae9541245ffc60e, type: 3}

@@ -39,6 +39,6 @@ MonoBehaviour:
     text: "\uADF8\uB7FC \uC120\uD0DD\uC9C0\uB97C \uACE8\uB77C\uC8FC\uC138\uC694."
     actions: []
     music: {fileID: 8300000, guid: c90bbda81fc61b64096dab173e188461, type: 3}
-    sound: {fileID: 0}
+    sound: {fileID: 8300000, guid: cfc727c4485524842b984e5a1448b5b1, type: 3}
   background: {fileID: 21300000, guid: 2bee83c81274e894cb4dc5f4d1556ebd, type: 3}
   nextScene: {fileID: 11400000, guid: 704e357da6619244988977ba4819bc73, type: 2}
