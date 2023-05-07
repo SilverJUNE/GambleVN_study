@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class GameController : MonoBehaviour
     public  AudioController         audioController;
 
     public  DataHolder              data;
+
+    public  string                  menuScene;
 
     private State                   state = State.IDLE;
 
@@ -30,7 +33,7 @@ public class GameController : MonoBehaviour
             {
                 history.Add(this.data.scenes[scene] as StoryScene);
             });
-            currentScene = history[history.Count - 1];
+            currentScene = history[history.Count - 1] ;
             history.RemoveAt(history.Count - 1);
             bottomBar.SetSentenceIndex(data.sentence - 1);
         }
@@ -100,6 +103,7 @@ public class GameController : MonoBehaviour
                     prevScenes= historyIndicies    
                 };
                 SaveManager.SaveGame(data);
+                SceneManager.LoadScene(menuScene);
             }
         }
 

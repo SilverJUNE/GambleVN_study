@@ -711,10 +711,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameScene: VisualNovelScene
-  musicMixer: {fileID: 24100000, guid: 46bcc0a4f436ed84fa657e4b75a3e18a, type: 2}
   musicValue: {fileID: 296445320}
-  soundMixer: {fileID: 24100000, guid: c4c043c1b56754744a5a2d1842f0e8d8, type: 2}
+  musicMixer: {fileID: 24100000, guid: 46bcc0a4f436ed84fa657e4b75a3e18a, type: 2}
   soundValue: {fileID: 1327431978}
+  soundMixer: {fileID: 24100000, guid: c4c043c1b56754744a5a2d1842f0e8d8, type: 2}
+  loadButton: {fileID: 0}
 --- !u!95 &203309296
 Animator:
   serializedVersion: 4
@@ -1141,7 +1142,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 472783720}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 203309295}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &472783720
 MonoBehaviour:
   m_ObjectHideFlags: 0

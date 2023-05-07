@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
-    private static string SAVE_GAME = "savedGame";
+    private static string SAVED_GAME = "savedGame";
     public static void SaveGame(SaveData data)
     {
-        PlayerPrefs.SetString(SAVE_GAME, JsonUtility.ToJson(data));
+        PlayerPrefs.SetString(SAVED_GAME, JsonUtility.ToJson(data));
     }
 
     public static SaveData LoadGame()
     {
-        return JsonUtility.FromJson<SaveData>(PlayerPrefs.GetString(SAVE_GAME));
+        return JsonUtility.FromJson<SaveData>(PlayerPrefs.GetString(SAVED_GAME));
     }
 
     public static bool IsGameSaved()
     {
-        return PlayerPrefs.HasKey(SAVE_GAME);
+        return PlayerPrefs.HasKey(SAVED_GAME);
+    }
+
+    public static void ClearSaveGame()
+    {
+        PlayerPrefs.DeleteKey(SAVED_GAME);
     }
 }
 

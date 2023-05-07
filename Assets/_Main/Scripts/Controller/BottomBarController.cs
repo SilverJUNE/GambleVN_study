@@ -9,7 +9,7 @@ public class BottomBarController : MonoBehaviour
     public  TextMeshProUGUI personNameText;
     public  TextMeshProUGUI barText;
 
-    private int             sentenceIndex;
+    private int             sentenceIndex = -1;
     private StoryScene      currentScene;
     private State           state           = State.COMPLETED;
     private Animator        animator;
