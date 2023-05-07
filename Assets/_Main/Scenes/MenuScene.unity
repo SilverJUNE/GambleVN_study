@@ -715,7 +715,7 @@ MonoBehaviour:
   musicMixer: {fileID: 24100000, guid: 46bcc0a4f436ed84fa657e4b75a3e18a, type: 2}
   soundValue: {fileID: 1327431978}
   soundMixer: {fileID: 24100000, guid: c4c043c1b56754744a5a2d1842f0e8d8, type: 2}
-  loadButton: {fileID: 0}
+  loadButton: {fileID: 472783719}
 --- !u!95 &203309296
 Animator:
   serializedVersion: 4
