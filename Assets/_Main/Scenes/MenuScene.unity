@@ -710,7 +710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 440a38dc1486bf9479a24a612bbecb4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameScene: VisualNovelScene
+  loaderScene: LoadingScene
   musicValue: {fileID: 296445320}
   musicMixer: {fileID: 24100000, guid: 46bcc0a4f436ed84fa657e4b75a3e18a, type: 2}
   soundValue: {fileID: 1327431978}

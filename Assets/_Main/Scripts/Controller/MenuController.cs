@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
-    public  string              gameScene;
+    public  string              loaderScene;
 
     private Animator            animator;
     private int                 _window = 0;
@@ -43,7 +43,7 @@ public class MenuController : MonoBehaviour
 
     public void Load()
     {
-        SceneManager.LoadScene(gameScene, LoadSceneMode.Single);
+        SceneManager.LoadScene(loaderScene, LoadSceneMode.Additive);
     }
 
     public void ShowOptions()
