@@ -10,6 +10,8 @@ public class GameController : MonoBehaviour
     public  ChooseController        chooseController;
     public  AudioController         audioController;
 
+    public  DataHolder              data;
+
     private State                   state = State.IDLE;
 
     private List<StoryScene>        history = new List<StoryScene>();
@@ -21,13 +23,24 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        if(SaveManager.IsGameSaved())
+        {
+            SaveData data = SaveManager.LoadGame();
+            data.prevScenes.ForEach(scene =>
+            {
+                history.Add(this.data.scenes[scene] as StoryScene);
+            });
+            currentScene = history[history.Count - 1];
+            history.RemoveAt(history.Count - 1);
+            bottomBar.SetSentenceIndex(data.sentence - 1);
+        }
         if (currentScene is StoryScene)
         {
             StoryScene storyScene = currentScene as StoryScene;
             history.Add(storyScene);
-            bottomBar.PlayScene(storyScene);
+            bottomBar.PlayScene(storyScene, bottomBar.GetSentenceIndex());
             backgroundController.SetImage(storyScene.background);
-            PlayAudio(storyScene.sentences[0]);
+            PlayAudio(storyScene.sentences[bottomBar.GetSentenceIndex()]);
         }
     }
     private void Update()
@@ -74,7 +87,20 @@ public class GameController : MonoBehaviour
                     bottomBar.GoBack();
                 }
             }
-
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                List<int> historyIndicies = new List<int>();
+                history.ForEach(scene =>
+                {
+                    historyIndicies.Add(this.data.scenes.IndexOf(scene));
+                });
+                SaveData data = new SaveData
+                {
+                    sentence = bottomBar.GetSentenceIndex(),
+                    prevScenes= historyIndicies    
+                };
+                SaveManager.SaveGame(data);
+            }
         }
 
     }

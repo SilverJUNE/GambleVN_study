@@ -770,6 +770,7 @@ MonoBehaviour:
   backgroundController: {fileID: 795295350}
   chooseController: {fileID: 2068705299}
   audioController: {fileID: 1723294801}
+  data: {fileID: 11400000, guid: 2c9c7b8609af8834da06fa861738b3fe, type: 2}
 --- !u!1 &880865238
 GameObject:
   m_ObjectHideFlags: 0
