@@ -9,7 +9,6 @@ public class SceneSwitcher : MonoBehaviour
     public  string      loaderScene;
     public  string      sceneToLoad;
 
-    // Start is called before the first frame update
     void Start()
     {
         UnloadStartScene();
@@ -18,13 +17,13 @@ public class SceneSwitcher : MonoBehaviour
     private void UnloadStartScene()
     {
         SceneManager.sceneUnloaded += OnStartUnloaded;
-        SceneManager.UnloadSceneAsync(sceneToLoad);
+        SceneManager.UnloadSceneAsync(sceneToUnload);
     }
 
     private void OnStartUnloaded(Scene scene)
     {
-        SceneManager.sceneUnloaded -= OnStartUnloaded;
-        SceneManager.sceneLoaded += OnEndLoaded;
+        SceneManager.sceneUnloaded  -= OnStartUnloaded;
+        SceneManager.sceneLoaded    += OnEndLoaded;
         SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Additive);
     }
 
